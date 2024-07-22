@@ -9,7 +9,7 @@ package dia.pkg1;
  * @author camper
  */
 public class Modulo {
-     private String nombre;
+    private String nombre;
     private String descripcion;
 
     public Modulo(String nombre, String descripcion) {

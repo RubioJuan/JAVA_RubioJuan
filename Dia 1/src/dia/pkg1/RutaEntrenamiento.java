@@ -10,15 +10,20 @@ import java.util.ArrayList;
  *
  * @author camper
  */
+
 public class RutaEntrenamiento {
-     private Ruta ruta;
+    private Ruta ruta;
     private ArrayList<Modulo> modulos;
     private int capacidad;
+    private Trainer trainer;
+    private ArrayList<Camper> campersAsignados;
 
-    public RutaEntrenamiento(Ruta ruta, int capacidad) {
+    public RutaEntrenamiento(Ruta ruta, int capacidad, Trainer trainer) {
         this.ruta = ruta;
         this.capacidad = capacidad;
+        this.trainer = trainer;
         this.modulos = new ArrayList<>();
+        this.campersAsignados = new ArrayList<>();
     }
 
     public Ruta getRuta() {
@@ -43,5 +48,25 @@ public class RutaEntrenamiento {
 
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    public ArrayList<Camper> getCampersAsignados() {
+        return campersAsignados;
+    }
+
+    public boolean agregarCamper(Camper camper) {
+        if (this.campersAsignados.size() < this.capacidad) {
+            this.campersAsignados.add(camper);
+            return true;
+        }
+        return false;
     }
 }
