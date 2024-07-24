@@ -9,21 +9,21 @@ package dia.pkg3;
  * @author camper
  */
 public class Departamento {
-    private String id;
+    private int id;
     private String nombre;
     
     // Creación de un constructor
-    public Departamento(String id, String nombre){
+    public Departamento(int id, String nombre){
         this.id = id;
         this.nombre = nombre;
     }
     
     // Getters y setters de Id
-    public String getId(){
+    public int getId(){
         return id;
     }
     
-    public void setId(String id){
+    public void setId(int id){
         this.id = id;
     }
     
@@ -35,7 +35,6 @@ public class Departamento {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
       // Método para representar el departamento como una cadena de texto
     @Override
     public String toString() {

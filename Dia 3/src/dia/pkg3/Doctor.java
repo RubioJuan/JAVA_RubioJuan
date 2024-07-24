@@ -9,14 +9,14 @@ package dia.pkg3;
  * @author camper
  */
 public class Doctor {
-    private String id;
+    private int id;
     private String nombre;
     private String especialidad;
     private int aynosExperiencia;
-    private String departamentoId; // Referencia al departamento al que pertemenece
+    private int departamentoId; // Referencia al departamento al que pertemenece
     
     // Constructor
-     public Doctor(String id, String nombre, String especialidad, int aynosExperiencia, String departamentoId) {
+    public Doctor(int id, String nombre, String especialidad, int aynosExperiencia, int departamentoId) {
         this.id = id;
         this.nombre = nombre;
         this.especialidad = especialidad;
@@ -24,11 +24,11 @@ public class Doctor {
         this.departamentoId = departamentoId;
     }
       // Getters y Setters
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,11 +56,11 @@ public class Doctor {
         this.aynosExperiencia = anosExperiencia;
     }
 
-    public String getDepartamentoId() {
+    public int getDepartamentoId() {
         return departamentoId;
     }
 
-    public void setDepartamentoId(String departamentoId) {
+    public void setDepartamentoId(int departamentoId) {
         this.departamentoId = departamentoId;
     }
 
