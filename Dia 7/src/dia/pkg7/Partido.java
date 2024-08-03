@@ -12,14 +12,14 @@ import java.time.LocalDate;
  */
 
 public abstract class Partido {
-    protected String equipoLocal;
-    protected String equipoVisitante;
-    protected int cestasLocal;
-    protected int cestasVisitante;
-    protected boolean haFinalizado;
-    protected LocalDate fecha;
-    
-public Partido(String equipoLocal, String equipoVisitante, LocalDate fecha) {
+ private String equipoLocal;
+    private String equipoVisitante;
+    private int cestasLocal;
+    private int cestasVisitante;
+    private boolean haFinalizado;
+    private LocalDate fecha;
+
+    public Partido(String equipoLocal, String equipoVisitante, LocalDate fecha) {
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.fecha = fecha;
@@ -28,38 +28,37 @@ public Partido(String equipoLocal, String equipoVisitante, LocalDate fecha) {
         this.haFinalizado = false;
     }
 
-    public String obtenerInformacionBasica() {
-        return String.format("Partido: %s vs %s, Fecha: %s, Finalizado: %s",
-                equipoLocal, equipoVisitante, fecha, haFinalizado ? "Sí" : "No");
+    public String getEquipoLocal() {
+        return equipoLocal;
     }
 
-    public void registrarPuntosLocal(int puntos) {
-        if (!haFinalizado) {
-            cestasLocal += puntos;
-        }
+    public String getEquipoVisitante() {
+        return equipoVisitante;
     }
 
-    public void registrarPuntosVisitante(int puntos) {
-        if (!haFinalizado) {
-            cestasVisitante += puntos;
-        }
+    public int getCestasLocal() {
+        return cestasLocal;
     }
 
-    public String obtenerGanador() {
-        if (cestasLocal > cestasVisitante) {
-            return equipoLocal;
-        } else if (cestasVisitante > cestasLocal) {
-            return equipoVisitante;
-        } else {
-            return "Empate";
-        }
+    public int getCestasVisitante() {
+        return cestasVisitante;
+    }
+
+    public boolean isHaFinalizado() {
+        return haFinalizado;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
     }
 
     public void finalizarPartido() {
-        if (!haFinalizado && !esEmpate()) {
-            haFinalizado = true;
-        }
+        this.haFinalizado = true;
     }
 
-    public abstract boolean esEmpate();
+    public abstract String obtenerGanador();
+
+    public String obtenerInformacionBasica() {
+        return "Local: " + equipoLocal + ", Visitante: " + equipoVisitante + ", Fecha: " + fecha;
+    }
 }
