@@ -14,9 +14,25 @@ import java.util.Scanner;
 
 public class Main {
     private ArrayList<juego> juegos;
+    private static final int MAX_VILLANOS = 5;
+    private boolean superHeroeCreado = false;
 
     public Main() {
         juegos = new ArrayList<>();
+    }
+
+    private int contarVillanos() {
+        int count = 0;
+        for (juego personaje : juegos) {
+            if (personaje instanceof Villano) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean haySuperHeroe() {
+        return superHeroeCreado;
     }
 
     public void registrarPersonaje() {
@@ -25,23 +41,37 @@ public class Main {
         System.out.println("1. Super Heroe");
         System.out.println("2. Villano");
         int tipo = sc.nextInt();
-        sc.nextLine(); // Consumes the newline character
+        sc.nextLine(); // Consume el carácter de nueva línea
 
-        System.out.print("Nombre: ");
-        String nombre = sc.nextLine();
-        System.out.print("Habilidad: ");
-        String habilidad = sc.nextLine();
-        
         if (tipo == 1) {
+            if (haySuperHeroe()) {
+                System.out.println("Ya existe un SuperHéroe en el juego.");
+                return;
+            }
+            System.out.print("Nombre: ");
+            String nombre = sc.nextLine();
+            System.out.print("Habilidad: ");
+            String habilidad = sc.nextLine();
             System.out.print("Arma: ");
             String arma = sc.nextLine();
             SuperHero superHero = new SuperHero(nombre, habilidad, arma);
             juegos.add(superHero);
+            superHeroeCreado = true;
+            superHero.guardarEnBaseDeDatos();
         } else if (tipo == 2) {
+            if (contarVillanos() >= MAX_VILLANOS) {
+                System.out.println("Se ha alcanzado el límite de villanos.");
+                return;
+            }
+            System.out.print("Nombre: ");
+            String nombre = sc.nextLine();
+            System.out.print("Habilidad: ");
+            String habilidad = sc.nextLine();
             System.out.print("Raza: ");
             String raza = sc.nextLine();
             Villano villano = new Villano(nombre, habilidad, raza);
             juegos.add(villano);
+            villano.guardarEnBaseDeDatos();
         } else {
             System.out.println("Tipo de personaje no válido.");
         }
@@ -74,14 +104,13 @@ public class Main {
         }
     }
 
-    public void mostrarInformacionPartido() {
+    public void mostrarInformacionJuego() {
         for (int i = 0; i < juegos.size(); i++) {
             juego personaje = juegos.get(i);
             System.out.println("Personaje " + i + ": " + personaje.mostrarInformacion());
         }
     }
-
-    public static void main(String[] args) {
+public static void main(String[] args) {
         Main sistema = new Main();
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -106,7 +135,7 @@ public class Main {
                     sistema.mostrarInformacion();
                     break;
                 case 4:
-                    sistema.mostrarInformacionPartido();
+                    sistema.mostrarInformacionJuego();
                     break;
                 case 5:
                     System.out.println("Game Over...");
