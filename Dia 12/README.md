@@ -42,4 +42,4 @@ Los patrones estructurales en Java se centran en cómo componer clases y objetos
 
 * Proporciona un sustituto o marcador de posición para otro objeto para controlar el acceso a este.
 
-* Ejemplo: Usar un proxy para controlar el acceso a un recurso remoto o para cargar de forma diferida un objeto costoso.
+* Ejemplo: Usar un proxy para controlar el acceso a un recurso remoto o para cargar de forma diferida un objeto costoso. 
