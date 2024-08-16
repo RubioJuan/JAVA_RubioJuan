@@ -8,13 +8,83 @@ package dia.pkg13;
  *
  * @author Juan Felipe Rubio
  */
-public class Dia13 {
 
-    /**
-     * @param args the command line arguments
-     */
+/*
+// Uso del Chain of Responsaibility
+public class Main {
     public static void main(String[] args) {
-        // TODO code application logic here
+        SupportHandler basic = new BasicSupport();
+        SupportHandler technical = new TechnicalSupport();
+        SupportHandler advanced = new AdvancedSupport();
+
+        basic.setNextHandler(technical);
+        technical.setNextHandler(advanced);
+
+        basic.handleRequest("Technical");
     }
-    
 }
+*/
+
+/*
+// Uso de Command
+public class Main {
+    public static void main(String[] args) {
+        Command open = new OpenCommand();
+        Command save = new SaveCommand();
+
+        Menu menu = new Menu(open, save);
+        menu.clickOpen();
+        menu.clickSave();
+    }
+}
+*/
+
+
+/*
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+// Uso de Iterator
+public class Main {
+    public static void main(String[] args) {
+        List<String> items = new ArrayList<>();
+        items.add("Item1");
+        items.add("Item2");
+        items.add("Item3");
+
+        Iterator<String> iterator = items.iterator();
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+*/
+
+/*
+// Uso de Observer
+public class Main {
+    public static void main(String[] args) {
+        Subject subject = new Subject();
+
+        Observer observer1 = new ConcreteObserver("Observer 1");
+        Observer observer2 = new ConcreteObserver("Observer 2");
+
+        subject.addObserver(observer1);
+        subject.addObserver(observer2);
+
+        subject.notifyObservers("New update available!");
+    }
+}
+*/
+
+// Uso de State
+public class Main {
+    public static void main(String[] args) {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin();
+        machine.selectProduct();
+    }
+}
+
